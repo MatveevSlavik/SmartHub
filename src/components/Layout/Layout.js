@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react';
+import AppBar from './components/AppBar';
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
     <>
-      <h1>header</h1>
+      <AppBar />
       <h2>left sidebar</h2>
-      <h2>right sidebar</h2>
+      {children}
     </>
   );
 };
