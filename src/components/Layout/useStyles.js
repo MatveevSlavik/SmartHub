@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
   },
   layoutWrapper: {
     maxWidth: 1440,
-    margin: theme.spacing(0, 'auto'),
+    margin: theme.spacing(0, 'auto'), 
   },
+  
 }));

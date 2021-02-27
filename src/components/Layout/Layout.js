@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Typography } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 
 import AppBar from './components/AppBar';
+import LeftSideBar from './components/LeftSideBar';
 
 import useStyles from './useStyles';
 
@@ -11,7 +12,7 @@ const Layout = ({ children }) => {
     <Box className={classes.root}>
       <AppBar />
       <Box className={classes.layoutWrapper}>
-        <Typography>left sidebar</Typography>
+      <LeftSideBar/>
         {children}
       </Box>
     </Box>

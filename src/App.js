@@ -1,7 +1,8 @@
+import { Box } from '@material-ui/core';
 import React from 'react';
 
 const App = () => {
-  return <h1>main content</h1>;
+  return <Box height={2000}>main content</Box>;
 };
 
 export default App;
