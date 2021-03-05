@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
     background: theme.palette.primary.main,
     width: LEFT_SIDEBAR_WIDTH,
     height: '100vh',
+    position: 'absolute',
   },
   fixedSideBar: {
     position: 'fixed',
