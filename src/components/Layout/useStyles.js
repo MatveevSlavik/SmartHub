@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core';
-import { LEFT_SIDEBAR_WIDTH } from './components/LeftSideBar/constants';
 
 export default makeStyles((theme) => ({
   root: {
@@ -11,7 +10,8 @@ export default makeStyles((theme) => ({
     display: 'flex',
   },
   childrenWrapper: {
-    paddingLeft: LEFT_SIDEBAR_WIDTH,
-    width: "100%",
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
 }));
