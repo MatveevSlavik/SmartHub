@@ -17,7 +17,10 @@ const Layout = ({ children }) => {
         <LeftSideBar />
         <Box className={classes.childrenWrapper} component="section">
           <SearchBar />
-          {children}
+          <Box display="flex">
+            {children}
+            <RightSideBar />
+          </Box>
         </Box>
       </Box>
     </Box>

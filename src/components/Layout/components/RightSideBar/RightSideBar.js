@@ -1,17 +1,16 @@
 import React from 'react';
 
-import { Box, Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 
 import useStyles from './useStyles';
-import App from '../../../../App';
 
 const RightSideBar = () => {
   const classes = useStyles();
 
   return (
-      <Grid item md={3}>
-        <Typography className={classes.wrapper} >Реклама</Typography>
-      </Grid>
+    <Grid item md={4} className={classes.wrapper}>
+      <Typography>Реклама</Typography>
+    </Grid>
   );
 };
 

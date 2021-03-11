@@ -4,5 +4,7 @@ export default makeStyles((theme) => ({
   wrapper: {
     background: '#eef1f4',
     height: '100vh',
+    position: 'sticky',
+    top: 0,
   },
 }));
