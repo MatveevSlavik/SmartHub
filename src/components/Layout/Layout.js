@@ -3,7 +3,8 @@ import { Box } from '@material-ui/core';
 
 import AppBar from './components/AppBar';
 import LeftSideBar from './components/LeftSideBar';
-import SearchBar from './components/SearchBar/SearchBar';
+import SearchBar from './components/SearchBar';
+import RightSideBar from './components/RightSideBar';
 
 import useStyles from './useStyles';
 
@@ -15,7 +16,7 @@ const Layout = ({ children }) => {
       <Box className={classes.layoutWrapper}>
         <LeftSideBar />
         <Box className={classes.childrenWrapper} component="section">
-          <SearchBar  />
+          <SearchBar />
           {children}
         </Box>
       </Box>
