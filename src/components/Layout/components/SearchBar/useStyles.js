@@ -16,5 +16,8 @@ export default makeStyles((theme) => ({
     background: theme.palette.secondary.main,
     color: theme.palette.common.white,
     fontSize: '12px',
+    '&:hover': {
+      background: "#159776"
+    }
   },
 }));
