@@ -9,17 +9,20 @@ const LeftSideBar = () => {
 
   return (
     <Box className={classes.wrapper} component="aside">
-      <AccountCircleIcon  className={classes.leftIcons} />
-      <Button  className={classes.authBut}> Войни на сайт</Button>
-      <Divider />
+      <Button
+        startIcon={<AccountCircleIcon  />}
+        className={classes.authBut}
+      >
+        Войни на сайт
+      </Button>
+      <Divider  className={classes.divider}/>
       {/* <AccountCircleIcon className={classes.leftIcons} /> */}
-      <Button className={classes.LeftButtons} >Все вопросы</Button>
+      <Button className={classes.LeftButtons}>Все вопросы</Button>
       {/* <AccountCircleIcon className={classes.leftIcons} /> */}
-      <Button className={classes.LeftButtons} >Все теги</Button>
+      <Button className={classes.LeftButtons}>Все теги</Button>
       {/* <AccountCircleIcon className={classes.leftIcons} /> */}
-      <Button className={classes.LeftButtons} >Пользователи</Button>
+      <Button className={classes.LeftButtons}>Пользователи</Button>
     </Box>
-    
   );
 };
 

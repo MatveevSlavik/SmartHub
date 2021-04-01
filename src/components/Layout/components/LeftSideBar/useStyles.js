@@ -13,20 +13,20 @@ export default makeStyles((theme) => ({
   },
   authBut: {
     margin: theme.spacing(20 / 8, 0, 0, 20/8),
-    textTransform: 'none',
-    color: "white"
+    color: theme.palette.common.white
   },
   LeftButtons: {
     margin: theme.spacing(20 / 8, 0, 0, 20/8),
-    textTransform: 'none',
-    color: "#a7b3cb",
+    color: theme.palette.text.secondary,
     '&:hover': {
-      background: "#4f5a6e",
-      color: "white"
+      background: "none",
+      color: theme.palette.common.white
     }
   },
-  leftIcons: {
-    position: 'absolute',
-    margin: theme.spacing(24 / 8, 0, 0, 20 / 8),
-  },
+  divider:{
+    marginTop: theme.spacing(2)
+  }
+  // leftIcons: {
+    
+  // },
 }));

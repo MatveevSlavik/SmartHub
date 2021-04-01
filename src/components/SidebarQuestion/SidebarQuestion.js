@@ -1,13 +1,14 @@
-import { Box } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import React from 'react';
-import useStyles from '../MainQuestionPreview/useStyles';
+import useStyles from "./useStyles";
 
-const SidebarQuestion = ({ title,  answer }) => {
-  const classes = useStyles;
+const SidebarQuestion = ({ title, answer }) => {
+  const classes = useStyles();
 
   return (
-    <Box>
-      {title} {answer}
+    <Box py={2} borderTop="1px solid #dae1e8">
+      <Typography>{title}</Typography>
+      <Typography className={classes.answer}>{answer}</Typography>
     </Box>
   );
 };
