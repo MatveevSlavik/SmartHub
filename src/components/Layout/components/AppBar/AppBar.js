@@ -8,7 +8,11 @@ const AppBar = () => {
 
   return (
     <Box className={classes.wrapper}>
-      <Typography variant="h6" className={classes.logo}>SmartHub</Typography>
+      <Box maxWidth={1400} width="100%" margin="0px auto">
+        <Typography variant="h6" className={classes.logo}>
+          SmartHub
+        </Typography>
+      </Box>
     </Box>
   );
 };

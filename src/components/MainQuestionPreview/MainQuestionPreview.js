@@ -6,11 +6,17 @@ const MainQuestionPreview = ({ title, language, answer, watched, hours }) => {
   const classes = useStyles();
 
   return (
-    <Box display='flex'  alignItems="flex-end" justifyContent='space-between' py={2} borderBottom="1px solid #dae1e8">
+    <Box
+      display="flex"
+      alignItems="flex-end"
+      justifyContent="space-between"
+      py={2}
+      borderBottom="1px solid #dae1e8"
+    >
       <Box>
         <Typography className={classes.language}>{language}</Typography>
         <Typography variant="h6" className={classes.title}>
-          {title}{' '}
+          {title}
         </Typography>
         <Box display="flex">
           <Typography className={classes.hours}>{hours} </Typography>
