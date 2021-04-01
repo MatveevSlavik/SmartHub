@@ -8,5 +8,25 @@ export default makeStyles((theme) => ({
     height: '100vh',
     position: 'sticky',
     top: 0,
+    display: 'flex',
+    flexDirection: 'column',
   },
+  authBut: {
+    margin: theme.spacing(20 / 8, 0, 0, 20/8),
+    color: theme.palette.common.white
+  },
+  LeftButtons: {
+    margin: theme.spacing(20 / 8, 0, 0, 20/8),
+    color: theme.palette.text.secondary,
+    '&:hover': {
+      background: "none",
+      color: theme.palette.common.white
+    }
+  },
+  divider:{
+    marginTop: theme.spacing(2)
+  }
+  // leftIcons: {
+    
+  // },
 }));

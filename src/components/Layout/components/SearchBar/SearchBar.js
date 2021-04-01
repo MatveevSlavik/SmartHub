@@ -14,7 +14,7 @@ const SearchBar = () => {
           variant="outlined"
           size="small"
           fullWidth
-          placeholder='dfadfaff'
+          placeholder='Найти вопрос,ответ,тег или пользователя'
           inputProps={{className: classes.searchInput}}
         />
       </Grid>
