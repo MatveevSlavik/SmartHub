@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
         <LeftSideBar />
         <Box className={classes.childrenWrapper} component="section">
           <SearchBar />
-          <Box display="flex">
+          <Box display="flex" alignItems="start">
             {children}
             <RightSideBar />
           </Box>

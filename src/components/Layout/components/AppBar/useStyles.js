@@ -12,5 +12,6 @@ export default makeStyles((theme) => ({
   logo: {
     color: theme.palette.common.white,
     fontWeight: theme.typography.fontWeightBold,
+    marginLeft: theme.spacing(5),
   },
 }));
