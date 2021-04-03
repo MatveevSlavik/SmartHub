@@ -8,7 +8,8 @@ import RightSideBar from './components/RightSideBar';
 
 import useStyles from './useStyles';
 
-const Layout = ({ children }) => {
+const withLayout = (children) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const classes = useStyles();
   return (
     <Box className={classes.root}>
@@ -27,4 +28,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default withLayout;

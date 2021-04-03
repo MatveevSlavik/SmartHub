@@ -1,12 +1,15 @@
-import { Box, Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
+import { Box, Button, Grid, Typography } from '@material-ui/core';
+
+import withLayout from './components/Layout/withLayout';
 import MainQuestionPreview from './components/MainQuestionPreview/MainQuestionPreview';
+
 import useStyles from './useStyles';
-// import MainQuestion from './components/MainQuestion/MainQuestionPreview';
 
 const App = () => {
   const classes = useStyles();
-  return (
+
+  return withLayout(
     <Grid className={classes.wrapper} container>
       <Grid xs={12} item>
         <Typography className={classes.title} paragraph>
@@ -39,7 +42,7 @@ const App = () => {
           answer="1 "
         />
       </Grid>
-    </Grid>
+    </Grid>,
   );
 };
 
