@@ -1,48 +1,20 @@
 import React from 'react';
-import { Box, Button, Grid, Typography } from '@material-ui/core';
-
+import { Route,  Switch } from 'react-router-dom';
+import QuestionForm from './components/Layout/QuestionForm/QuestionForm';
 import withLayout from './components/Layout/withLayout';
-import MainQuestionPreview from './components/MainQuestionPreview/MainQuestionPreview';
+import LoginForm from './components/LoginForm/LoginForm';
 
-import useStyles from './useStyles';
+import QuestionPageContent from './components/QuestionPageContent/QuestionPageContent';
 
 const App = () => {
-  const classes = useStyles();
+  return (
+      <Switch>
+        {/* <QuestionPageContent /> */}
+        <Route path="/" exact component={()=>withLayout(<QuestionPageContent/>)} />
+        <Route path="/login" exact component={LoginForm} />
+        <Route path="/createQuestion" exact component={()=>withLayout(<QuestionForm/>)} />
 
-  return withLayout(
-    <Grid className={classes.wrapper} container>
-      <Grid xs={12} item>
-        <Typography className={classes.title} paragraph>
-          Все вопросы
-        </Typography>
-      </Grid>
-      <Box className={classes.mainButtons}>
-        <Button className={classes.mainButtons} variant="outlined">
-          Новые вопросы
-        </Button>
-        <Button className={classes.mainButtons2} variant="outlined">
-          Без ответа
-        </Button>
-      </Box>
-      <Grid xs={12} item>
-        <MainQuestionPreview
-          language="python"
-          title="Ошибка в использовании готовой Keras модели нейронной сети"
-          hours="22 часа назад"
-          watched="65 просмотров"
-          answer="1 "
-        />
-      </Grid>
-      <Grid xs={12} item>
-        <MainQuestionPreview
-          language="python"
-          title="Ошибка в использовании готовой Keras модели нейронной сети"
-          hours="22 часа назад"
-          watched="65 просмотров"
-          answer="1 "
-        />
-      </Grid>
-    </Grid>,
+      </Switch>
   );
 };
 

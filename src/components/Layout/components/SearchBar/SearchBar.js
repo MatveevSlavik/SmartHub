@@ -19,7 +19,7 @@ const SearchBar = () => {
         />
       </Grid>
       <Grid container justify={'center'} item md={3}>
-        <Button className={classes.but} variant="contained">
+        <Button href="/createQuestion" className={classes.but} variant="contained">
           Задать вопрос
         </Button>
       </Grid>

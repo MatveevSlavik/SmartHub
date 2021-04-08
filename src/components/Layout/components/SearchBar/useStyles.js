@@ -15,9 +15,10 @@ export default makeStyles((theme) => ({
   but: {
     background: theme.palette.secondary.main,
     color: theme.palette.common.white,
-    fontSize: '12px',
+    textTransform: 'none',
+    fontSize: '15px',
     '&:hover': {
-      background: "#159776"
-    }
+      background: '#159776',
+    },
   },
 }));

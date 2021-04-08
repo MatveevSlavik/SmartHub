@@ -12,12 +12,18 @@ export default makeStyles((theme) => ({
     flexDirection: 'column',
   },
   authBut: {
-    margin: theme.spacing(20 / 8, 0, 0, 20/8),
-    color: theme.palette.common.white
+    marginTop: theme.spacing(20 / 8,),
+    color: theme.palette.common.white,
+    textTransform: 'none',
+    '&:hover': {
+      background: "none",
+      color: theme.palette.common.white
+    }
   },
   LeftButtons: {
-    margin: theme.spacing(20 / 8, 0, 0, 20/8),
+    marginTop: theme.spacing(20 / 8),
     color: theme.palette.text.secondary,
+    textTransform: 'none',
     '&:hover': {
       background: "none",
       color: theme.palette.common.white
@@ -26,7 +32,5 @@ export default makeStyles((theme) => ({
   divider:{
     marginTop: theme.spacing(2)
   }
-  // leftIcons: {
-    
-  // },
+
 }));
