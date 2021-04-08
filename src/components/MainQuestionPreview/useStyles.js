@@ -1,9 +1,12 @@
 import { makeStyles } from '@material-ui/core';
 import { GREY_TEXT_COLOR } from '../../theme/constants';
+import { PINK_LANGUAGE_COLOR } from '../../theme/constants';
+
 
 export default makeStyles((theme) => ({
   language: {
-    color: theme.palette.error.dark,
+    color: PINK_LANGUAGE_COLOR,
+    // textTransform: 'uppercase'
   },
   title: {
     fontWeight: theme.typography.fontWeightBold
@@ -15,4 +18,7 @@ export default makeStyles((theme) => ({
   watched: {
     color: GREY_TEXT_COLOR,
   },
+  answers: {
+    color: GREY_TEXT_COLOR,
+  }
 }));

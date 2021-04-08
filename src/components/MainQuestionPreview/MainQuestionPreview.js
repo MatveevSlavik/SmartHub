@@ -23,7 +23,7 @@ const MainQuestionPreview = ({ title, language, answer, watched, hours }) => {
           <Typography className={classes.watched}>{watched} </Typography>
         </Box>
       </Box>
-      <Box>
+      <Box className={classes.answers}>
         <Typography align="center">{answer}</Typography>
         <Typography align="center">Ответ</Typography>
       </Box>
