@@ -4,10 +4,7 @@ import { GREY_TEXT_COLOR } from '../../theme/constants';
 export default makeStyles((theme) => ({
   wrapper: {
     background: theme.palette.common.white,
-    padding: theme.spacing(30 / 8),
-  },
-  searchField: {
-    borderRadius: '7px',
+    padding: theme.spacing(4),
   },
   title: {
     marginBottom: theme.spacing(3),
@@ -15,7 +12,7 @@ export default makeStyles((theme) => ({
   },
   mainText: {
     marginBottom: theme.spacing(1),
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
   },
   divider: {
     marginBottom: theme.spacing(2),
