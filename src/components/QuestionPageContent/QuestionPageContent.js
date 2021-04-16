@@ -40,6 +40,6 @@ const QuestionPageContent = () => {
         />
       </Grid>
     </Grid>
-  )
+  );
 };
 export default QuestionPageContent;
