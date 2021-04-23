@@ -30,12 +30,10 @@ const LeftSideBar = () => {
     logOut()
       .then(() => {
         dispatch({ type: 'LOGIN_FAILED' });
-        console.log("qwert")
         push('/');
       })
       .catch((_err) => {
-        dispatch({type: 'LOGOUT_Failed'});
-        console.log(12314)
+        dispatch();
       })
 
   };
