@@ -11,26 +11,33 @@ export default makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  authBut: {
-    marginTop: theme.spacing(20 / 8,),
+  authButton: {
+    marginTop: theme.spacing(20 / 8),
     color: theme.palette.common.white,
     textTransform: 'none',
     '&:hover': {
-      background: "none",
-      color: theme.palette.common.white
-    }
+      background: 'none',
+      color: theme.palette.common.white,
+    },
   },
   LeftButtons: {
     marginTop: theme.spacing(20 / 8),
     color: theme.palette.text.secondary,
     textTransform: 'none',
     '&:hover': {
-      background: "none",
-      color: theme.palette.common.white
-    }
+      background: 'none',
+      color: theme.palette.common.white,
+    },
   },
-  divider:{
-    marginTop: theme.spacing(2)
-  }
-
+  divider: {
+    marginTop: theme.spacing(2),
+  },
+  usersMenu: {
+    margin: theme.spacing(6),
+  },
+  signIn: {
+    marginTop: theme.spacing(2),
+    color: theme.palette.common.white,
+    textTransform: 'none',
+  },
 }));

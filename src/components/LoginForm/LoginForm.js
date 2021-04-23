@@ -1,7 +1,7 @@
 import React from 'react';
 import { object, string } from 'yup';
 import { withFormik, Form, Field } from 'formik';
-import { Box, Button, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Grid, Paper, Typography } from '@material-ui/core';
 
 import TextField from '../TextField';
 
@@ -17,6 +17,7 @@ const LoginForm = ({ isValid, isSubmitting, dirty }) => {
 
   return (
     <Box className={classes.wrapper}>
+      <Paper elevation={3} >
       <Grid container justify="center">
         <Typography variant="h6" paragraph>
           Login
@@ -28,7 +29,7 @@ const LoginForm = ({ isValid, isSubmitting, dirty }) => {
           spacing={3}
           item
           xs={12}
-          md={4}
+          md={3}
           style={{ margin: '0 auto' }}
         >
           <Grid item xs={12}>
@@ -56,6 +57,7 @@ const LoginForm = ({ isValid, isSubmitting, dirty }) => {
           </Grid>
         </Grid>
       </Form>
+      </Paper>
     </Box>
   );
 };
