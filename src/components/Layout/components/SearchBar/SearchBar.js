@@ -2,8 +2,12 @@ import React from 'react';
 import { Button, Grid, TextField } from '@material-ui/core';
 
 import useStyles from './useStyles';
+import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
 
 const SearchBar = () => {
+  const { push } = useHistory();
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const classes = useStyles();
 
   return (
@@ -14,12 +18,22 @@ const SearchBar = () => {
           variant="outlined"
           size="small"
           fullWidth
-          placeholder='Найти вопрос,ответ,тег или пользователя'
-          inputProps={{className: classes.searchInput}}
+          placeholder="Найти вопрос,ответ,тег или пользователя"
+          inputProps={{ className: classes.searchInput }}
         />
       </Grid>
       <Grid container justify={'center'} item md={3}>
-        <Button href="/create-question" className={classes.but} variant="contained">
+        <Button
+          onClick={() => {
+            isLoggedIn ? (
+              push('/create-question')
+            ): (
+              push('/login')
+            )
+          }}
+          className={classes.buttonQuestion}
+          variant="contained"
+        >
           Задать вопрос
         </Button>
       </Grid>

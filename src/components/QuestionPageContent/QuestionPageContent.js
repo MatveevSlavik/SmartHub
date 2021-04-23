@@ -14,10 +14,10 @@ const QuestionPageContent = () => {
         </Typography>
       </Grid>
       <Box>
-        <Button className={classes.mainButtons} variant="outlined">
+        <Button className={classes.newQuestion} variant="outlined">
           Новые вопросы
         </Button>
-        <Button className={classes.mainButtons2} variant="outlined">
+        <Button className={classes.noAnswer} variant="outlined">
           Без ответа
         </Button>
       </Box>

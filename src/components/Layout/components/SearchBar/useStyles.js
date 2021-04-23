@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
   searchInput: {
     color: theme.palette.common.white,
   },
-  but: {
+  buttonQuestion: {
     background: theme.palette.secondary.main,
     color: theme.palette.common.white,
     textTransform: 'none',
