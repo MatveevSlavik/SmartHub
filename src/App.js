@@ -7,7 +7,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 
 import QuestionPageContent from './components/QuestionPageContent';
 import { login } from './store/actions/authActions';
-
+import { questionCreate } from './store/actions/questionActions';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,6 +27,21 @@ const App = () => {
       .finally(() => setSubmitting(false));
   };
 
+  const handleSubmitQuestion = ({
+    values,
+    resetForm,
+    setStatus,
+    setSubmitting,
+  }) => {
+    setSubmitting(true);
+    questionCreate(values)
+      .then(() => setStatus({ text: 'Вопрос успешно создан' }))
+      .catch((err) => setStatus({ text: err.message }))
+      .finally(() => {
+        setSubmitting(false);
+      });
+    resetForm();
+  };
 
   return (
     <Switch>
@@ -43,7 +58,14 @@ const App = () => {
       <Route
         path="/create-question"
         exact
-        component={() => withLayout(<QuestionForm />)}
+        component={() =>
+          withLayout(<QuestionForm handleSubmit={handleSubmitQuestion} />)
+        }
+      />
+      <Route
+        path="/questions"
+        exact
+        component={() => withLayout(<QuestionPageContent />)}
       />
     </Switch>
   );

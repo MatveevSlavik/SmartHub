@@ -2,7 +2,7 @@ import { Box, Typography } from '@material-ui/core';
 import React from 'react';
 import useStyles from './useStyles';
 
-const MainQuestionPreview = ({ title, language, answer, watched, hours }) => {
+const MainQuestionPreview = ({ title, language, answer, hours }) => {
   const classes = useStyles();
 
   return (
@@ -19,8 +19,7 @@ const MainQuestionPreview = ({ title, language, answer, watched, hours }) => {
           {title}
         </Typography>
         <Box display="flex">
-          <Typography className={classes.hours}>{hours} </Typography>
-          <Typography className={classes.watched}>{watched} </Typography>
+          <Typography className={classes.hours}>{hours}</Typography>
         </Box>
       </Box>
       <Box className={classes.answers}>

@@ -13,5 +13,6 @@ export default makeStyles((theme) => ({
     color: theme.palette.common.white,
     fontWeight: theme.typography.fontWeightBold,
     marginLeft: theme.spacing(5),
+    cursor: 'pointer',
   },
 }));

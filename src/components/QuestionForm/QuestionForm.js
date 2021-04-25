@@ -1,20 +1,46 @@
-import React from 'react';
-import { Button, Divider, Grid, Typography } from '@material-ui/core';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import {
+  Button,
+  CircularProgress,
+  Divider,
+  Grid,
+  Typography,
+} from '@material-ui/core';
 import { Field, Form, withFormik } from 'formik';
-import { object, string } from 'yup';
+import { array, object, string } from 'yup';
 
 import useStyles from './useStyles';
 
 import TextField from '../TextField';
+import Autocomplete from '../Autocomplete';
+import { useSelector } from 'react-redux';
+import AlertMessage from '../AlertMessage';
 
 const loginSchema = object().shape({
   question: string().required().min(8),
-  tags: string().required(),
+  tags: array()
+    .test('tags', 'tags is a required field', (tags) => {
+      return !!tags.length;
+    })
+    .nullable()
+    .required(),
   description: string().required().min(15),
 });
 
-const QuestionForm = ({ isValid, isSubmitting, dirty }) => {
+const QuestionForm = ({ isValid, isSubmitting, dirty, status }) => {
   const classes = useStyles();
+  const { push } = useHistory();
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (!isLoggedIn) push('/login');
+  }, [push, isLoggedIn]);
+
+  const options = [
+    { id: 1, title: 'HTML' },
+    { id: 2, title: 'CSS' },
+  ];
 
   return (
     <Grid className={classes.wrapper} container>
@@ -32,8 +58,7 @@ const QuestionForm = ({ isValid, isSubmitting, dirty }) => {
             className={classes.input}
             name="question"
             label="Question"
-            variant="outlined"
-            size="small"
+            size="medium"
             required
             component={TextField}
           />
@@ -46,10 +71,11 @@ const QuestionForm = ({ isValid, isSubmitting, dirty }) => {
             className={classes.input}
             name="tags"
             label="Tags"
-            variant="outlined"
-            size="small"
+            size="medium"
             required
-            component={TextField}
+            options={options}
+            component={Autocomplete}
+            multiple
           />
           <Typography className={classes.mainText}>Детали вопроса</Typography>
           <Typography className={classes.secondText}>
@@ -60,21 +86,25 @@ const QuestionForm = ({ isValid, isSubmitting, dirty }) => {
             className={classes.input}
             name="description"
             label="Description"
-            variant="outlined"
-            size="small"
+            size="medium"
+            multiline
+            rows={3}
+            rowsMax={10}
             required
             component={TextField}
           />
+          <Button
+            className={classes.publish}
+            type="submit"
+            variant="outlined"
+            size="small"
+            disabled={!isValid || !dirty || isSubmitting}
+          >
+            {isSubmitting ? <CircularProgress size={20} /> : 'Опубликовать'}
+          </Button>
         </Form>
       </Grid>
-      <Button
-        className={classes.publish}
-        variant="outlined"
-        size="small"
-        disabled={!isValid || !dirty || isSubmitting}
-      >
-        Опубликовать
-      </Button>
+      <AlertMessage text={status && status.text} />
     </Grid>
   );
 };
@@ -83,12 +113,12 @@ export default withFormik({
   mapPropsToValues: () => {
     return {
       question: '',
-      tags: '',
+      tags: [],
       description: '',
     };
   },
   validationSchema: loginSchema,
-  handleSubmit: (values, { props, setSubmitting, setErrors }) => {
-    props.handleSubmit({ values, setSubmitting, setErrors });
+  handleSubmit: (values, { props, setSubmitting, resetForm, setStatus }) => {
+    props.handleSubmit({ values, setSubmitting, resetForm, setStatus });
   },
 })(QuestionForm);

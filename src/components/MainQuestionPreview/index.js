@@ -1,1 +1,1 @@
-export { default } from './MainQuestion';
+export { default } from './MainQuestionPreview';

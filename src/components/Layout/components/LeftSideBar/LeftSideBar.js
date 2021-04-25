@@ -26,7 +26,6 @@ const LeftSideBar = () => {
   };
 
   const handleLogOut = () => {
-
     logOut()
       .then(() => {
         dispatch({ type: 'LOGIN_FAILED' });
@@ -34,8 +33,7 @@ const LeftSideBar = () => {
       })
       .catch((_err) => {
         dispatch();
-      })
-
+      });
   };
 
   return (
@@ -73,7 +71,11 @@ const LeftSideBar = () => {
       )}
 
       <Divider className={classes.divider} />
-      <Button startIcon={<LibraryBooksIcon />} className={classes.LeftButtons}>
+      <Button
+        startIcon={<LibraryBooksIcon />}
+        className={classes.LeftButtons}
+        onClick={() => push('/questions')}
+      >
         Все вопросы
       </Button>
       <Button startIcon={<LocalOfferIcon />} className={classes.LeftButtons}>
