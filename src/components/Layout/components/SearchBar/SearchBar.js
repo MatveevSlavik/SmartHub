@@ -3,11 +3,9 @@ import { Button, Grid, TextField } from '@material-ui/core';
 
 import useStyles from './useStyles';
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
 
 const SearchBar = () => {
   const { push } = useHistory();
-  const { isLoggedIn } = useSelector((state) => state.auth);
   const classes = useStyles();
 
   return (
@@ -24,13 +22,7 @@ const SearchBar = () => {
       </Grid>
       <Grid container justify={'center'} item md={3}>
         <Button
-          onClick={() => {
-            isLoggedIn ? (
-              push('/create-question')
-            ): (
-              push('/login')
-            )
-          }}
+          onClick={() => push('/create-question')}
           className={classes.buttonQuestion}
           variant="contained"
         >

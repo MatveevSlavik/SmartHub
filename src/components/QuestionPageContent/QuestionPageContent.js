@@ -1,10 +1,22 @@
 import { Box, Button, Grid, Typography } from '@material-ui/core';
-import React from 'react';
-import MainQuestionPreview from '../MainQuestionPreview/MainQuestionPreview';
+import moment from 'moment';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchQuestions } from '../../store/actions/questionActions';
+import MainQuestionPreview from '../MainQuestionPreview';
 import useStyles from './useStyles';
 
 const QuestionPageContent = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { questions } = useSelector((state) => state.questionsData);
+
+  useEffect(() => {
+    fetchQuestions().then((snap) => {
+      const data = snap.docs.map((doc) => doc.data());
+      dispatch({ type: 'FETCH_QUESTIONS_SUCCESS', payload: data });
+    });
+  }, [dispatch]);
 
   return (
     <Grid className={classes.wrapper} container>
@@ -21,24 +33,20 @@ const QuestionPageContent = () => {
           Без ответа
         </Button>
       </Box>
-      <Grid xs={12} item>
-        <MainQuestionPreview
-          language="python"
-          title="Ошибка в использовании готовой Keras модели нейронной сети"
-          hours="22 часа назад"
-          watched="65 просмотров"
-          answer="1 "
-        />
-      </Grid>
-      <Grid xs={12} item>
-        <MainQuestionPreview
-          language="python"
-          title="Ошибка в использовании готовой Keras модели нейронной сети"
-          hours="22 часа назад"
-          watched="65 просмотров"
-          answer="1 "
-        />
-      </Grid>
+      {questions.map(({ id, question, tags, createdAt, answers }) => {
+        const language = tags.map(({ title }) => title).join(', ');
+        return (
+          <Grid xs={12} item>
+            <MainQuestionPreview
+              key={id}
+              language={language}
+              title={question}
+              hours={moment(createdAt).fromNow()}
+              answer={answers || 0}
+            />
+          </Grid>
+        );
+      })}
     </Grid>
   );
 };
