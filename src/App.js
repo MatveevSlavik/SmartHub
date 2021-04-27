@@ -43,7 +43,7 @@ const App = () => {
         component={() => <LoginForm handleSubmit={handleSubmitLogin} />}
       />
       <Route
-        path="/check-in"
+        path="/sign-up"
         exact
         component={() => <RegisterForm/>}
       />

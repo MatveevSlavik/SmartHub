@@ -1,7 +1,7 @@
 import React from 'react';
 import { object, string } from 'yup';
-import { withFormik, Field } from 'formik';
-import {  Button, Grid, Paper, Typography } from '@material-ui/core';
+import { withFormik, Field, Form } from 'formik';
+import { Button, Grid, Paper, Typography } from '@material-ui/core';
 
 import TextField from '../TextField';
 
@@ -17,45 +17,45 @@ const LoginForm = ({ isValid, isSubmitting, dirty }) => {
   const classes = useStyles();
   const { push } = useHistory();
 
-
   return (
     <Grid className={classes.wrapper} xs={12} container justify="center">
       <Paper elevation={3}>
-        <Grid xs={9}>
+        <Grid xs={10}>
           <Typography className={classes.title}>Вход</Typography>
           <Typography className={classes.mainText}>E-mail</Typography>
-          <Field
-            className={classes.input}
-            name="email"
-            label="Email"
-            required
-            component={TextField}
-          />
-          <Typography className={classes.mainText}>Пароль</Typography>
-          <Field
-            className={classes.input}
-            name="password"
-            label="Пароль"
-            type="password"
-            required
-            component={TextField}
-          />
+          <Form>
+            <Field
+              className={classes.input}
+              name="email"
+              label="Email"
+              required
+              component={TextField}
+            />
+            <Typography className={classes.mainText}>Пароль</Typography>
+            <Field
+              className={classes.input}
+              name="password"
+              label="Пароль"
+              type="password"
+              required
+              component={TextField}
+            />
+            <Button
+              className={classes.signInButton}
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              disabled={!isValid || !dirty || isSubmitting}
+            >
+              Войти
+            </Button>
+          </Form>
           <Button
-            className={classes.signInButton}
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            disabled={!isValid || !dirty || isSubmitting}
-          >
-            Войти
-          </Button>
-          <Button
-            onClick={()=> {
-              push('/check-in')
+            onClick={() => {
+              push('/sign-up');
             }}
             className={classes.registerButton}
-            type="submit"
             variant="contained"
             color="primary"
           >

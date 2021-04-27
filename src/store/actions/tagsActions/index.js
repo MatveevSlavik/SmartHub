@@ -1,5 +1,5 @@
 import firebase from 'firebase';
 
-export const getTags =  (id, title) => {
+export const getTags =  () => {
   return firebase.firestore().collection("tags").get();
 };

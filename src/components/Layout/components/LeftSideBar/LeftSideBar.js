@@ -73,7 +73,7 @@ const LeftSideBar = () => {
       )}
 
       <Divider className={classes.divider} />
-      <Button onClick={() => push('/')} startIcon={<LibraryBooksIcon />} className={classes.LeftButtons}>
+      <Button onClick={() => push('/questions')} startIcon={<LibraryBooksIcon />} className={classes.LeftButtons}>
         Все вопросы
       </Button>
       <Button onClick={() => push('/tags')} startIcon={<LocalOfferIcon />} className={classes.LeftButtons}>
