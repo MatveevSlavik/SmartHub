@@ -7,6 +7,8 @@ import LoginForm from './components/LoginForm/LoginForm';
 
 import QuestionPageContent from './components/QuestionPageContent';
 import { login } from './store/actions/authActions';
+import TagsPageContent from './components/TagsPageContent/TagsPageContent';
+import RegisterForm from './components/RegisterForm/RegisterForm';
 
 
 const App = () => {
@@ -39,6 +41,16 @@ const App = () => {
         path="/login"
         exact
         component={() => <LoginForm handleSubmit={handleSubmitLogin} />}
+      />
+      <Route
+        path="/check-in"
+        exact
+        component={() => <RegisterForm/>}
+      />
+      <Route
+        path="/tags"
+        exact
+        component={() => withLayout(<TagsPageContent />)}
       />
       <Route
         path="/create-question"
