@@ -79,6 +79,11 @@ const App = () => {
         exact
         component={() => withLayout(<QuestionPageContent />)}
       />
+      <Route
+        path="/questions/:id"
+        exact
+        component={() => withLayout(<QuestionPageContent />)}
+      />
     </Switch>
   );
 };

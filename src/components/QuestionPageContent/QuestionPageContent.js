@@ -36,9 +36,9 @@ const QuestionPageContent = () => {
       {questions.map(({ id, question, tags, createdAt, answers }) => {
         const language = tags.map(({ title }) => title).join(', ');
         return (
-          <Grid xs={12} item>
+          <Grid xs={12} item key={id}>
             <MainQuestionPreview
-              key={id}
+              id={id}
               language={language}
               title={question}
               hours={moment(createdAt).fromNow()}

@@ -1,9 +1,12 @@
-import { Box, Typography } from '@material-ui/core';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { Box, Typography } from '@material-ui/core';
+
 import useStyles from './useStyles';
 
-const MainQuestionPreview = ({ title, language, answer, hours }) => {
+const MainQuestionPreview = ({ id, title, language, answer, hours }) => {
   const classes = useStyles();
+  const { push } = useHistory();
 
   return (
     <Box
@@ -15,7 +18,12 @@ const MainQuestionPreview = ({ title, language, answer, hours }) => {
     >
       <Box>
         <Typography className={classes.language}>{language}</Typography>
-        <Typography variant="h6" className={classes.title}>
+        <Typography
+          title={title}
+          variant="h6"
+          className={classes.title}
+          onClick={() => push(`/questions/${id}`)}
+        >
           {title}
         </Typography>
         <Box display="flex">
