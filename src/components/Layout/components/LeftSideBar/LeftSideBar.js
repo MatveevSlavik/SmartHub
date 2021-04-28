@@ -26,7 +26,6 @@ const LeftSideBar = () => {
   };
 
   const handleLogOut = () => {
-
     logOut()
       .then(() => {
         dispatch({ type: 'LOGIN_FAILED' });
@@ -34,8 +33,7 @@ const LeftSideBar = () => {
       })
       .catch((_err) => {
         dispatch();
-      })
-
+      });
   };
 
   return (
