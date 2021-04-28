@@ -1,11 +1,12 @@
 import React from 'react';
 import { object, string } from 'yup';
-import { withFormik, Form, Field } from 'formik';
-import { Box, Button, Grid, Paper, Typography } from '@material-ui/core';
+import { withFormik, Field, Form } from 'formik';
+import { Button, Grid, Paper, Typography } from '@material-ui/core';
 
 import TextField from '../TextField';
 
 import useStyles from './useStyles';
+import { useHistory } from 'react-router';
 
 const loginSchema = object().shape({
   email: string().email().required(),
@@ -14,51 +15,55 @@ const loginSchema = object().shape({
 
 const LoginForm = ({ isValid, isSubmitting, dirty }) => {
   const classes = useStyles();
+  const { push } = useHistory();
 
   return (
-    <Box className={classes.wrapper}>
-      <Paper elevation={3} >
-      <Grid container justify="center">
-        <Typography variant="h6" paragraph>
-          Login
-        </Typography>
-      </Grid>
-      <Form>
-        <Grid
-          container
-          spacing={3}
-          item
-          xs={12}
-          md={3}
-          style={{ margin: '0 auto' }}
-        >
-          <Grid item xs={12}>
-            <Field name="email" label="Email" required component={TextField} />
-          </Grid>
-          <Grid item xs={12}>
+    <Grid className={classes.wrapper} xs={12} container justify="center">
+      <Paper elevation={3}>
+        <Grid xs={10}>
+          <Typography className={classes.title}>Вход</Typography>
+          <Typography className={classes.mainText}>E-mail</Typography>
+          <Form>
             <Field
+              className={classes.input}
+              name="email"
+              label="Email"
+              required
+              component={TextField}
+            />
+            <Typography className={classes.mainText}>Пароль</Typography>
+            <Field
+              className={classes.input}
               name="password"
-              label="Password"
+              label="Пароль"
               type="password"
               required
               component={TextField}
             />
-          </Grid>
-          <Grid item xs={12}>
             <Button
+              className={classes.signInButton}
               type="submit"
               variant="contained"
               color="primary"
               fullWidth
               disabled={!isValid || !dirty || isSubmitting}
             >
-              Login
+              Войти
             </Button>
-          </Grid>
+          </Form>
+          <Button
+            onClick={() => {
+              push('/sign-up');
+            }}
+            className={classes.registerButton}
+            variant="contained"
+            color="primary"
+          >
+            Создать аккаунт
+          </Button>
         </Grid>
-      </Form>
       </Paper>
-    </Box>
+    </Grid>
   );
 };
 
