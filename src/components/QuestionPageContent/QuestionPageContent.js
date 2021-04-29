@@ -33,7 +33,7 @@ const QuestionPageContent = () => {
           Без ответа
         </Button>
       </Box>
-      {questions.map(({ id, question, tags, createdAt, answers }) => {
+      {questions.map(({ id, question, tags, createdAt, answers = [] }) => {
         const language = tags.map(({ title }) => title).join(', ');
         return (
           <Grid xs={12} item key={id}>
@@ -42,7 +42,7 @@ const QuestionPageContent = () => {
               language={language}
               title={question}
               hours={moment(createdAt).fromNow()}
-              answer={answers || 0}
+              answers={answers}
             />
           </Grid>
         );
