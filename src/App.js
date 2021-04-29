@@ -1,17 +1,21 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useStore } from 'react-redux';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import QuestionForm from './components/QuestionForm';
 import withLayout from './components/Layout/withLayout';
 import LoginForm from './components/LoginForm/LoginForm';
-
 import QuestionPageContent from './components/QuestionPageContent';
-import { login } from './store/actions/authActions';
 import TagsPageContent from './components/TagsPageContent/TagsPageContent';
 import RegisterForm from './components/RegisterForm/RegisterForm';
+import MainQuestion from './components/MainQuestion/MainQuestion';
+
+import { login } from './store/actions/authActions';
 import { questionCreate } from './store/actions/questionActions';
 
 const App = () => {
+  const {
+    auth: { email },
+  } = useStore().getState();
   const dispatch = useDispatch();
   const { push } = useHistory();
 
@@ -36,13 +40,15 @@ const App = () => {
     setSubmitting,
   }) => {
     setSubmitting(true);
-    questionCreate(values)
-      .then(() => setStatus({ text: 'Вопрос успешно создан' }))
+    questionCreate({ ...values, nickname: email })
+      .then(() => {
+        resetForm();
+        setStatus({ text: 'Вопрос успешно создан' });
+      })
       .catch((err) => setStatus({ text: err.message }))
       .finally(() => {
         setSubmitting(false);
       });
-    resetForm();
   };
 
   return (
@@ -57,11 +63,7 @@ const App = () => {
         exact
         component={() => <LoginForm handleSubmit={handleSubmitLogin} />}
       />
-      <Route
-        path="/sign-up"
-        exact
-        component={() => <RegisterForm/>}
-      />
+      <Route path="/sign-up" exact component={() => <RegisterForm />} />
       <Route
         path="/tags"
         exact
@@ -82,7 +84,7 @@ const App = () => {
       <Route
         path="/questions/:id"
         exact
-        component={() => withLayout(<QuestionPageContent />)}
+        component={() => withLayout(<MainQuestion />)}
       />
     </Switch>
   );

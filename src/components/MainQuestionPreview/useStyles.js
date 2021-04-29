@@ -8,6 +8,9 @@ export default makeStyles((theme) => ({
   },
   title: {
     fontWeight: theme.typography.fontWeightBold,
+    textDecoration: 'none',
+    color: theme.palette.text.primary,
+    ...theme.typography.h6,
   },
   hours: {
     color: GREY_TEXT_COLOR,

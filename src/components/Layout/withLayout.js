@@ -11,6 +11,7 @@ import useStyles from './useStyles';
 const withLayout = (children) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const classes = useStyles();
+
   return (
     <Box className={classes.root}>
       <AppBar />
@@ -18,7 +19,13 @@ const withLayout = (children) => {
         <LeftSideBar />
         <Box className={classes.childrenWrapper} component="section">
           <SearchBar />
-          <Box display="flex" alignItems="start">
+          <Box
+            display="flex"
+            alignItems="start"
+            bgcolor="#fff"
+            height="100%"
+            style={{ overflowY: 'auto' }}
+          >
             {children}
             <RightSideBar />
           </Box>

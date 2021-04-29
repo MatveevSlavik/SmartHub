@@ -28,9 +28,10 @@ const TagsPageContent = () => {
       <Typography className={classes.title}>Все теги</Typography>
 
       {tags.map((value) => {
-        const { title } = value;
+        const { title, id } = value;
+        
         return (
-          <Grid xs={4}>
+          <Grid item xs={4} key={id}>
             <List className={classes.ul}>
               <ListItemText className={classes.language}>{title}</ListItemText>
               <Divider />
