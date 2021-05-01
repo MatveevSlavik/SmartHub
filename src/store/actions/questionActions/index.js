@@ -4,11 +4,18 @@ import { v4 as uuid } from 'uuid';
 export const questionCreate = (data) => {
   const id = uuid();
 
+  const { displayName } = firebase.auth().currentUser;
+
   return firebase
     .firestore()
     .collection('questions')
     .doc(id)
-    .set({ id, createdAt: new Date().getTime(), ...data });
+    .set({
+      id,
+      createdAt: new Date().getTime(),
+      nickname: displayName,
+      ...data,
+    });
 };
 
 export const fetchQuestions = () => {

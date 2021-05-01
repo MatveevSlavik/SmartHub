@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useStore } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import QuestionForm from './components/QuestionForm';
 import withLayout from './components/Layout/withLayout';
@@ -9,13 +9,10 @@ import TagsPageContent from './components/TagsPageContent/TagsPageContent';
 import RegisterForm from './components/RegisterForm/RegisterForm';
 import MainQuestion from './components/MainQuestion/MainQuestion';
 
-import { login } from './store/actions/authActions';
+import { createUser, login } from './store/actions/authActions';
 import { questionCreate } from './store/actions/questionActions';
 
 const App = () => {
-  const {
-    auth: { email },
-  } = useStore().getState();
   const dispatch = useDispatch();
   const { push } = useHistory();
 
@@ -40,7 +37,7 @@ const App = () => {
     setSubmitting,
   }) => {
     setSubmitting(true);
-    questionCreate({ ...values, nickname: email })
+    questionCreate(values)
       .then(() => {
         resetForm();
         setStatus({ text: 'Вопрос успешно создан' });
@@ -49,6 +46,14 @@ const App = () => {
       .finally(() => {
         setSubmitting(false);
       });
+  };
+
+  const handleRegister = ({ values, setSubmitting }) => {
+    setSubmitting(true);
+
+    createUser(values)
+      .then(() => push('/login'))
+      .finally(() => setSubmitting(false));
   };
 
   return (
@@ -63,7 +68,11 @@ const App = () => {
         exact
         component={() => <LoginForm handleSubmit={handleSubmitLogin} />}
       />
-      <Route path="/sign-up" exact component={() => <RegisterForm />} />
+      <Route
+        path="/sign-up"
+        exact
+        component={() => <RegisterForm handleSubmit={handleRegister} />}
+      />
       <Route
         path="/tags"
         exact
