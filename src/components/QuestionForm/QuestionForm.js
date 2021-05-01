@@ -58,7 +58,6 @@ const QuestionForm = ({ isValid, isSubmitting, dirty, status }) => {
             className={classes.input}
             name="question"
             label="Question"
-            size="medium"
             required
             component={TextField}
           />
@@ -71,7 +70,7 @@ const QuestionForm = ({ isValid, isSubmitting, dirty, status }) => {
             className={classes.input}
             name="tags"
             label="Tags"
-            size="medium"
+            size="small"
             required
             options={options}
             component={Autocomplete}
@@ -86,7 +85,6 @@ const QuestionForm = ({ isValid, isSubmitting, dirty, status }) => {
             className={classes.input}
             name="description"
             label="Description"
-            size="medium"
             multiline
             rows={3}
             rowsMax={10}

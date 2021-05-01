@@ -14,3 +14,7 @@ export const questionCreate = (data) => {
 export const fetchQuestions = () => {
   return firebase.firestore().collection('questions').get();
 };
+
+export const fetchQuestion = (id) => {
+  return firebase.firestore().collection('questions').doc(id).get();
+};

@@ -5,6 +5,7 @@ export default makeStyles((theme) => ({
   wrapper: {
     background: theme.palette.common.white,
     padding: theme.spacing(4),
+    // height: '100vh',
   },
   title: {
     marginBottom: theme.spacing(3),
@@ -20,13 +21,13 @@ export default makeStyles((theme) => ({
   secondText: {
     marginBottom: theme.spacing(1),
     color: GREY_TEXT_COLOR,
-    fontSize: "14px"
+    fontSize: '14px',
   },
   input: {
     marginBottom: theme.spacing(2),
   },
-  publish:{
+  publish: {
     textTransform: 'none',
-    fontSize: "14px",
-}
+    fontSize: '14px',
+  },
 }));

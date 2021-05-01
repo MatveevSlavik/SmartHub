@@ -18,9 +18,9 @@ const LoginForm = ({ isValid, isSubmitting, dirty }) => {
   const { push } = useHistory();
 
   return (
-    <Grid className={classes.wrapper} xs={12} container justify="center">
+    <Grid className={classes.wrapper} item xs={12} container justify="center">
       <Paper elevation={3}>
-        <Grid xs={10}>
+        <Grid item xs={10}>
           <Typography className={classes.title}>Вход</Typography>
           <Typography className={classes.mainText}>E-mail</Typography>
           <Form>

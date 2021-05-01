@@ -1,8 +1,10 @@
-import { Box, Typography } from '@material-ui/core';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Box, Typography } from '@material-ui/core';
+
 import useStyles from './useStyles';
 
-const MainQuestionPreview = ({ title, language, answer, hours }) => {
+const MainQuestionPreview = ({ id, title, language, answers, hours }) => {
   const classes = useStyles();
 
   return (
@@ -15,15 +17,15 @@ const MainQuestionPreview = ({ title, language, answer, hours }) => {
     >
       <Box>
         <Typography className={classes.language}>{language}</Typography>
-        <Typography variant="h6" className={classes.title}>
+        <Link to={`/questions/${id}`} className={classes.title}>
           {title}
-        </Typography>
+        </Link>
         <Box display="flex">
           <Typography className={classes.hours}>{hours}</Typography>
         </Box>
       </Box>
       <Box className={classes.answers}>
-        <Typography align="center">{answer}</Typography>
+        <Typography align="center">{answers.length}</Typography>
         <Typography align="center">Ответ</Typography>
       </Box>
     </Box>

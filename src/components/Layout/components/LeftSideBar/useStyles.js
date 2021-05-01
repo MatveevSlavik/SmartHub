@@ -5,7 +5,6 @@ export default makeStyles((theme) => ({
   wrapper: {
     background: theme.palette.primary.main,
     width: LEFT_SIDEBAR_WIDTH,
-    height: '100vh',
     position: 'sticky',
     top: 0,
     display: 'flex',
