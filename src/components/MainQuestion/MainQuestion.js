@@ -11,27 +11,23 @@ import {
   Typography,
 } from '@material-ui/core';
 import { useParams } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import CommentForm from './components/CommentForm';
-import {
-  fetchQuestion,
-  fetchQuestions,
-} from '../../store/actions/questionActions';
+import { fetchQuestion } from '../../store/actions/questionActions';
 
 import useStyles from './useStyles';
-import MainQuestionAnswer from '../MainQuestionAnswer/MainQuestionAnswer';
+import MainQuestionAnswer from '../MainQuestionAnswer';
 
 const MainQuestion = () => {
   const classes = useStyles();
 
   const { id } = useParams();
-  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState({});
-  const {
-    auth: { email },
-  } = useSelector((state) => state.firebase);
+  const { displayName = '' } = firebase.auth().currentUser || {};
+
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   useEffect(() => {
     setIsLoading(true);
@@ -55,10 +51,10 @@ const MainQuestion = () => {
 
   const answersCount = answers.length;
 
-  const getQuestions = () => {
-    fetchQuestions().then((snap) => {
-      const data = snap.docs.map((doc) => doc.data());
-      dispatch({ type: 'FETCH_QUESTIONS_SUCCESS', payload: data });
+  const getQuestion = () => {
+    fetchQuestion(id).then((snap) => {
+      const data = snap.data();
+      setCurrentQuestion(data);
     });
   };
 
@@ -84,14 +80,14 @@ const MainQuestion = () => {
             id: generatedId,
             createdAt: new Date().getTime(),
             comment: values.comment,
-            nickname: email,
+            nickname: displayName,
           },
         ],
       })
       .then(() => {
-        setStatus({ text: 'Комментарий успешно добавлен' });
-        getQuestions();
+        getQuestion();
         resetForm();
+        setStatus({ text: 'Комментарий успешно добавлен' });
       })
       .catch((err) => setStatus({ text: err.message }))
       .finally(() => setSubmitting(false));
@@ -136,7 +132,7 @@ const MainQuestion = () => {
               })}
             </>
           )}
-          <CommentForm handleSubmit={handleSaveComment} />
+          {isLoggedIn && <CommentForm handleSubmit={handleSaveComment} />}
         </>
       )}
     </Grid>

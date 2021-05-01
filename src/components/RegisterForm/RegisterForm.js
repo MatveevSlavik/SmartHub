@@ -56,6 +56,7 @@ const RegisterForm = ({ isValid, isSubmitting, dirty }) => {
               className={classes.input}
               name="repeatPassword"
               label="Пароль ещё раз"
+              type="password"
               required
               component={TextField}
             />
@@ -92,7 +93,7 @@ export default withFormik({
     };
   },
   validationSchema: loginSchema,
-  handleSubmit: (values, { props, setSubmitting, setErrors }) => {
-    props.handleSubmit({ values, setSubmitting, setErrors });
+  handleSubmit: (values, { props, setSubmitting }) => {
+    props.handleSubmit({ values, setSubmitting });
   },
 })(RegisterForm);
