@@ -1,12 +1,7 @@
-import {
-  Divider,
-  Grid,
-  List,
-  ListItemText,
-  Typography,
-} from '@material-ui/core';
+import { Divider, Grid, List, Typography } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getTags } from '../../store/actions/tagsActions';
 import useStyles from './useStyles';
 
@@ -29,11 +24,13 @@ const TagsPageContent = () => {
 
       {tags.map((value) => {
         const { title, id } = value;
-        
+
         return (
           <Grid item xs={4} key={id}>
             <List className={classes.ul}>
-              <ListItemText className={classes.language}>{title}</ListItemText>
+              <Link className={classes.language} to={`/questions?tag=${title}`}>
+                <Typography style={{ fontWeight: 'bold' }}>{title}</Typography>
+              </Link>
               <Divider />
               <Typography className={classes.question}>---вопросов</Typography>
             </List>
