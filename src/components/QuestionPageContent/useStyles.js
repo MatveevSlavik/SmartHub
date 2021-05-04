@@ -3,12 +3,10 @@ import { BLUE_HOVER_MAIN_BUTTONS } from '../../theme/constants';
 
 export default makeStyles((theme) => ({
   newQuestion: {
-    // display: 'flex',
     textTransform: 'none',
     borderRadius: 0,
     '&:hover': {
       color: BLUE_HOVER_MAIN_BUTTONS,
-      background: 'none',
     },
   },
   noAnswer: {
@@ -17,7 +15,6 @@ export default makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     '&:hover': {
       color: BLUE_HOVER_MAIN_BUTTONS,
-      background: 'none',
     },
   },
   wrapper: {

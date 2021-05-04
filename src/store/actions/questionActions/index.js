@@ -22,8 +22,14 @@ export const questionCreate = (data) => {
     });
 };
 
-export const fetchQuestions = () => {
-  return firebase.firestore().collection('questions').get();
+export const fetchQuestions = (shouldBeSorted = false) => {
+  return shouldBeSorted
+    ? firebase
+        .firestore()
+        .collection('questions')
+        .orderBy('createdAt', 'desc')
+        .get()
+    : firebase.firestore().collection('questions').get();
 };
 
 export const fetchQuestion = (id) => {
