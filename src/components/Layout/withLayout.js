@@ -5,12 +5,16 @@ import AppBar from './components/AppBar';
 import LeftSideBar from './components/LeftSideBar';
 import SearchBar from './components/SearchBar';
 import RightSideBar from './components/RightSideBar';
+import useProtectedRoute from '../../hooks/useProtectRoute';
 
 import useStyles from './useStyles';
 
 const withLayout = (children) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const classes = useStyles();
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useProtectedRoute();
 
   return (
     <Box className={classes.root}>
