@@ -67,7 +67,7 @@ const LoginForm = ({ isValid, isSubmitting, dirty }) => {
   );
 };
 
-export default withFormik({
+export default withFormik({       
   mapPropsToValues: () => {
     return {
       email: '',

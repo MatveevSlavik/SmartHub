@@ -11,6 +11,7 @@ import MainQuestion from './components/MainQuestion/MainQuestion';
 
 import { createUser, login } from './store/actions/authActions';
 import { questionCreate } from './store/actions/questionActions';
+import UsersPageContent from './components/UsersPageContent/UsersPageContent';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -77,6 +78,11 @@ const App = () => {
         path="/tags"
         exact
         component={() => withLayout(<TagsPageContent />)}
+      />
+      <Route
+        path="/users"
+        exact
+        component={() => withLayout(<UsersPageContent />)}
       />
       <Route
         path="/create-question"

@@ -77,7 +77,7 @@ const LeftSideBar = () => {
       <Button onClick={() => push('/tags')} startIcon={<LocalOfferIcon />} className={classes.LeftButtons}>
         Все теги
       </Button>
-      <Button startIcon={<PeopleAltIcon />} className={classes.LeftButtons}>
+      <Button onClick={() => push('/users')} startIcon={<PeopleAltIcon />} className={classes.LeftButtons}>
         Пользователи
       </Button>
     </Box>
