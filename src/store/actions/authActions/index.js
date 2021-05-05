@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import { v4 as uuid } from 'uuid';
 
+
 export const login = ({ email, password }) => {
   return firebase.auth().signInWithEmailAndPassword(email, password);
 };
@@ -9,7 +10,8 @@ export const logOut = () => {
   return firebase.auth().signOut();
 };
 
-export const createUser = ({ email, password, nickname }) => {
+export const createUser = ({ email, password, nickname }) => {   
+ 
   return firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
