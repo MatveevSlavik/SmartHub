@@ -16,7 +16,6 @@ const RightSideBar = () => {
         <Typography className={classes.title} variant="button" paragraph>Самое интересное за 24 часа</Typography>
         {questions.map(({ id, question, answers = [] }) => {
         return (
-          console.log(answers),
           <Grid xs={12} item key={id}>
             <SidebarQuestion
               id={id}

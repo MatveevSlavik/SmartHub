@@ -25,7 +25,6 @@ const UsersPageContent = () => {
       {users.map((value) => {
         const { nickname, id } = value;
 
-        console.log(value)
         return (
           <Grid item xs={4} key={id}>
             <List className={classes.ul}>
